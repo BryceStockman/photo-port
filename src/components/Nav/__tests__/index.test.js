@@ -26,7 +26,7 @@ describe('emoji is visible', () => {
 });
 
 describe('links are visible', () => {
-  it('inserts test into links', () => {
+  it('inserts text into the links', () => {
     const { getByTestId } = render(<Nav />);
     expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
     expect(getByTestId('about')).toHaveTextContent('About me');
