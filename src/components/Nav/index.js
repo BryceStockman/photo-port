@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 
 function Nav(props) {
   const {
     categories = [],
     setCurrentCategory,
-    currentCategory,
     contactSelected,
+    currentCategory,
     setContactSelected,
   } = props;
 
   return (
-    <header>
+    <header className="flex-row px-1">
       <h2>
-        <a href="/" data-testid="link">
+        <a data-testid="link" href="/">
           <span role="img" aria-label="camera">
             {' '}
             📸
@@ -23,22 +23,24 @@ function Nav(props) {
       </h2>
       <nav>
         <ul className="flex-row">
-          <li className={`mx-2 ${contactSelected && 'navActive'}`}>
+          <li className="mx-2">
             <a
-              href="#about"
               data-testid="about"
+              href="#about"
               onClick={() => setContactSelected(false)}
             >
               About me
             </a>
           </li>
-          <li>
+          <li className={`mx-2 ${contactSelected && 'navActive'}`}>
             <span onClick={() => setContactSelected(true)}>Contact</span>
           </li>
           {categories.map((category) => (
             <li
               className={`mx-1 ${
-                currentCategory.name === category.name && !contactSelected && 'navActive'
+                currentCategory.name === category.name &&
+                !contactSelected &&
+                'navActive'
               }`}
               key={category.name}
             >
